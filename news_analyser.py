@@ -1,9 +1,16 @@
 import requests
 import os
 
+from dotenv import load_dotenv
 
-API_KEY = "a36b6adb97544fd3a2ab4c7036ebfd0d"
-NEWS_API_URL = f"https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey={API_KEY}"
+# Load the environment variables from the .env file
+load_dotenv()
+
+# Access the API key
+NEWS_API_KEY = os.getenv("NEWS_API_KEY")
+
+
+NEWS_API_URL = f"https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey={NEWS_API_KEY}"
 
 def fetch_news():
     response = requests.get(NEWS_API_URL)
